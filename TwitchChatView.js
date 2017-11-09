@@ -174,6 +174,7 @@ function getVideoTimeString(seconds) {
 	var m = Math.floor((seconds / 60)) - (h*60);
 	var s = Math.floor(seconds%60);
 	if(s < 10) s = '0' + s;
+	if(h > 0 && m < 10) m = '0' + m;
 	return (h ? h+':' : '') + m + ':' + s;
 }
 
