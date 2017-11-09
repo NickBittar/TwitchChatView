@@ -37,6 +37,7 @@
 		border: 1px solid #e4e2e7;
 		padding: 5px;
 		padding-right: 20px;
+		box-shadow: inset 0px 0px 115px -10px gainsboro;
 	}
 	#chat-log {
 	}
@@ -88,8 +89,6 @@
 		box-shadow: 0px 3px 0px 2px #4b367a;
 		outline-offset: initial;
 	}
-	.input:active {
-	}
 	
 	.btn:hover, .btn:focus {
 		box-shadow: 0px 3px 0px 2px #4b367a;
@@ -110,6 +109,16 @@
 		box-shadow: 0px 1px 0px 2px #4b367a;
 		transform: translateY(2px);
 	}
+	.btn[disabled] {
+		cursor: default;
+		opacity: 0.5;
+		background: #6441a4;
+		box-shadow: 0px 1px 0px 2px #4b367a;
+		transform: translateY(2px);
+	}
+	.status-text {
+		font-style: italic;
+	}
 </style>
 <link href="lib/clusterize.css" rel="stylesheet">
 <script defer src="lib/ajax.js"></script>
@@ -127,7 +136,7 @@
 			<br>
 			Limit Requests <input id="max-fetches" class="input" type="number" value="5" min="1" step="1" max="100" />
 			<br>
-			Status: <span id="fetch-status">Idle</span>
+			Status: <span id="fetch-status" class="status-text">Idle</span>
 		</div>
 		<div class="output-container container">
 			<div>
