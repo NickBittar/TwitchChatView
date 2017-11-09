@@ -73,21 +73,36 @@
 	
 	
 	}
-	input[type="text"] {
+	.input[type="text"] {
 		width: 250px;
 	}
-	.btn:hover, .btn:focus {
-		box-shadow: 0px 3px 0px 2px #4b367a;
+	.input {
 		border-top: none;
 		margin-top: 1px;
+		border: 1px solid white;
+		outline: 1px solid;
+		padding: 4px 8px;
+		border: none;
+	}
+	.input:hover, .input:focus {
+		box-shadow: 0px 3px 0px 2px #4b367a;
+		outline-offset: initial;
+	}
+	.input:active {
+	}
+	
+	.btn:hover, .btn:focus {
+		box-shadow: 0px 3px 0px 2px #4b367a;
 		background: #7d5bbe;
 	}
 	.btn {
 		color: white;
 		background: #6441a4;
 		border: 1px solid white;
+		border-top: none;
+		margin-top: 1px;
 		cursor: pointer;
-		padding: 4px 6px;
+		padding: 6px 9px;
 		transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 	}
 	.btn:active {
@@ -104,13 +119,13 @@
 <body>
 	<div class="page">
 		<div class="input-container container">
-			Twitch API Client ID <input id="client-id" type="text" value="" />
+			Twitch API Client ID <input id="client-id" class="input" type="text" value="" />
 			<br>
-			Twitch VOD ID <input id="vod-id" type="text" value="" placeholder="only numbers e.g.: 178039967" />
+			Twitch VOD ID <input id="vod-id" class="input" type="text" value="" placeholder="only numbers e.g.: 178039967" />
 			<br>
 			<button id="get-chat-button" class="btn">Get Chat</button>
 			<br>
-			Limit Requests <input id="max-fetches" type="number" value="5" min="1" step="1" max="100" />
+			Limit Requests <input id="max-fetches" class="input" type="number" value="5" min="1" step="1" max="100" />
 			<br>
 			Status: <span id="fetch-status">Idle</span>
 		</div>
@@ -120,12 +135,12 @@
 					Autosearch
 					<input id="autosearch" type="checkbox" checked="true" />
 				</label>
-				<input id="chat-search" type="text" placeholder="search chat" />
+				<input id="chat-search" class="input" type="text" placeholder="search chat" />
 				<button id="chat-search-button" class="btn">Search</button>
 				<label>
 					Max Chat Messages Displayed
-					<input id="max-chat-blocks" type="number" value="500" min="1" step="1" max="1000000" />
 				</label>
+				<input id="max-chat-blocks" class="input" type="number" value="500" min="1" step="1" max="1000000" />
 			</div>
 			<div id="chat-container" class="chat-container clusterize-scroll">
 				<div id="chat-log" class="clusterize-content">
