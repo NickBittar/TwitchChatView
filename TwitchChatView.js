@@ -3,6 +3,7 @@ var chatNameColors = ["#FF0000", "#0000FF", "#008000", "#B22222", "#FF7F50", "#9
 var app = {
 	chatLog: [],
 	maxFetches: 5,
+	maxChatBlocks: 500
 };
 
 var clientIdInput = document.getElementById('client-id');
@@ -15,19 +16,34 @@ var autosearchInput = document.getElementById('autosearch');
 var chatSearchInput = document.getElementById('chat-search');
 var chatSearchButton = document.getElementById('chat-search-button');
 var chatLogDiv = document.getElementById('chat-log');
+var maxChatBlocksInput = document.getElementById('max-chat-blocks');
 
 getChatButton.addEventListener('click', getChatForVod);
 chatSearchButton.addEventListener('click', searchChat);
 chatSearchInput.addEventListener('input', e => autosearchInput.checked && searchChat());
-maxFetchesInput.addEventListener('input', function(e) { 
+maxFetchesInput.addEventListener('change', function(e) { 
 	app.maxFetches = parseInt(this.value); 
 	if (isNaN(app.maxFetches)) {
 		app.maxFetches = 5;
 		this.value = app.maxFetches;
 	}
 });
-
-
+clientIdInput.addEventListener('change', function(e) {
+	if(this.value == 'Groovy') {
+		this.value = 'jzkbprff40iqj646a697cyrvl0zt2m6';
+	}
+});
+maxChatBlocksInput.addEventListener('change', function(e) {
+	
+	if(this.value < this.min) this.value = this.min;
+	if(parseInt(this.value) > parseInt(this.max)) this.value = this.max;
+	if(isNaN(this.value)) this.value = 500;
+	
+	if(app.maxChatBlocks != this.value) {
+		app.maxChatBlocks = this.value;
+		searchChat();
+	}
+});
 
 	/* var clusterize = new Clusterize({
 	  scrollId: 'chat-container',
@@ -110,7 +126,8 @@ function displayChat(chatLog, append) {
 	if(!append) {
 		chatLogDiv.innerHTML = '';
 	}
-	for(var c of chatLog) {
+	for(var i = 0; i < chatLog.length && i < app.maxChatBlocks; i++) {
+		var c = chatLog[i];
 		var chatBlock = document.createElement('div');
 		var chatTime = document.createElement('div');
 		var chatName = document.createElement('span');
