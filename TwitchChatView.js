@@ -16,6 +16,7 @@ var chatSearchInput = document.getElementById('chat-search');
 var chatSearchButton = document.getElementById('chat-search-button');
 var chatLogDiv = document.getElementById('chat-log');
 
+
 getChatButton.addEventListener('click', getChatForVod);
 chatSearchButton.addEventListener('click', searchChat);
 chatSearchInput.addEventListener('input', e => autosearchInput.checked && searchChat());
