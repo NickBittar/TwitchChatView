@@ -54,6 +54,8 @@ maxChatBlocksInput.addEventListener('change', function(e) {
 	}); */
 
 function getChatForVod() {
+	getChatButton.disabled = true;
+	
 	var clientId = clientIdInput.value;
 	var vodId = voidIdInput.value;
 	
@@ -66,6 +68,7 @@ function getChatForVod() {
 	}
 	if(validationErrors.length > 0) {
 		alert('Error getting chat.\n' + validationErrors.join('\n'));
+		getChatButton.disabled = false;
 		return false;
 	}
 
@@ -113,12 +116,14 @@ function getChatLog(options) {
 		} else {
 			// Finished
 			fetchStatusSpan.innerText = 'Finished';
+			getChatButton.disabled = false;
 		}
 
 	}).fail(res => {
 		console.error(res);
 		fetchStatusSpan.innerText = 'Failed';
 		alert('Problem getting Twitch chat!\n' + res.responseJSON.error + '\n' + res.responseJSON.message);
+		getChatButton.disabled = false;
 	});
 }
 
