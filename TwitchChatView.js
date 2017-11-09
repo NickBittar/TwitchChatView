@@ -117,6 +117,7 @@ function getChatLog(options) {
 			// Finished
 			fetchStatusSpan.innerText = 'Finished';
 			getChatButton.disabled = false;
+			searchChat();
 		}
 
 	}).fail(res => {
