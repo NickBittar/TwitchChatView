@@ -1,0 +1,112 @@
+<html>
+<head>
+<style>
+	body {
+		margin: 0;
+	}
+	.page {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		padding: 16px 32px;
+		background: #f3f3f3;
+		font-family: Verdana;
+	}
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		padding: 10px;
+		margin: 10px 0px;
+		background: white;
+		box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+	}
+	.chat-container {
+		display: flex;
+		margin-top: 15px;
+		background: #faf9fa;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: 600px;
+		width: 80vw;
+		border: 1px solid #e4e2e7;
+		padding: 5px;
+		padding-right: 20px;
+	}
+	#chat-log {
+	}
+	.chat-block {
+		display: flex;
+		padding: 4px;
+		font-size: 14px;
+	}
+	.chat-time {
+		font-size: 12px;
+		font-family: monospace;
+		color: #555;
+		line-height: 18px;
+		display: table;
+	}
+	.chat-name {
+		font-weight: bold;
+		font-size: 12px;
+		white-space: nowrap;
+		max-width: 150px;
+		overflow-x: hidden;
+		text-overflow: ellipsis;
+		cursor: default;
+	}
+	.chat-name:hover {
+		color: black !important;
+	}
+	.chat-name::after {
+		content: ': ';
+		font-weight: initial;
+		color: initial;
+	}
+	.chat-message {
+	
+	}
+	.popped {
+		position: absolute;
+		top: 0px;
+	}
+</style>
+<link href="lib/clusterize.css" rel="stylesheet">
+<script defer src="lib/ajax.js"></script>
+<script defer src="lib/clusterize.min.js"></script>
+<script defer src="TwitchChatView.js"></script>
+</head>
+<body>
+	<div class="page">
+		<div class="input-container container">
+			Twitch API Key <input id="client-id" value="" />
+			<br>
+			Twitch VOD ID <input id="vod-id" value="" placeholder="only numbers e.g.: 178039967" />
+			<br>
+			<button id="get-chat-button">Get Chat</button>
+			<br>
+			Limit Requests <input id="max-fetches" type="number" value="5" min="1" step="1" max="100" />
+			<br>
+			Status: <span id="fetch-status">Idle</span>
+		</div>
+		<div class="output-container container">
+			<div>
+				<label>
+					Autosearch
+					<input id="autosearch" type="checkbox" checked="true" />
+				</label>
+				<input id="chat-search" placeholder="search chat" />
+				<button id="chat-search-button">Search</button>
+			</div>
+			<div id="chat-container" class="chat-container clusterize-scroll">
+				<div id="chat-log" class="clusterize-content">
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
