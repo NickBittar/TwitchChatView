@@ -16,7 +16,6 @@ var chatSearchInput = document.getElementById('chat-search');
 var chatSearchButton = document.getElementById('chat-search-button');
 var chatLogDiv = document.getElementById('chat-log');
 
-
 getChatButton.addEventListener('click', getChatForVod);
 chatSearchButton.addEventListener('click', searchChat);
 chatSearchInput.addEventListener('input', e => autosearchInput.checked && searchChat());
@@ -44,7 +43,7 @@ function getChatForVod() {
 	
 	var validationErrors = [];
 	if(!clientId) {
-		validationErrors.push('Please enter your Twitch API key');
+		validationErrors.push('Please enter your Twitch API Client ID (see: https://dev.twitch.tv/dashboard/apps)');
 	}
 	if(!vodId || !/[0-9]+/.test(vodId)) {
 		validationErrors.push('Please enter a valid VOD ID');
