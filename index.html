@@ -6,7 +6,6 @@
 	}
 	.page {
 		display: flex;
-		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 		padding: 16px 32px;
@@ -96,7 +95,7 @@
 	}
 	.btn {
 		color: white;
-		background: #6441a4;
+		background: #6441A4;
 		border: 1px solid white;
 		border-top: none;
 		margin-top: 1px;
@@ -119,6 +118,16 @@
 	.status-text {
 		font-style: italic;
 	}
+	.logo-container {
+		display: flex;
+		margin: 60px 0px;
+	}
+	#main-logo {
+	
+	}
+	#main-logo:hover {
+		filter: saturate(0) contrast(3);
+	}
 </style>
 <link href="lib/clusterize.css" rel="stylesheet">
 <script defer src="lib/ajax.js"></script>
@@ -127,6 +136,9 @@
 </head>
 <body>
 	<div class="page">
+		<div class="logo-container">
+			<img id="main-logo" src="res/logo.png"></img>
+		</div>
 		<div class="input-container container">
 			Twitch API Client ID <input id="client-id" class="input" type="text" value="" />
 			<br>
